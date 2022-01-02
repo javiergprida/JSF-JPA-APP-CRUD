@@ -42,7 +42,7 @@ public class DataService {
     }
 
     public Optional<Users> getUser(String username) {
-        return em.createNamedQuery("user.byUsername", Users.class)
+        return em.createNamedQuery("users.byUsername", Users.class)
                 .setParameter("username", username)
                 .getResultList()
                 .stream()

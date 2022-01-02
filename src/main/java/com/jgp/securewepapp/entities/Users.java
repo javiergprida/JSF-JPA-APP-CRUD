@@ -11,20 +11,20 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
-@Entity
+@Entity(name = "users")
 @Table(name = "users")
 @NamedQueries({
-    @NamedQuery(name = "users.all", query = "select us from users us order by us.id"),
-    @NamedQuery(name = "users.byUsername", query = "select us from users us where us.username = :username")
+    @NamedQuery(name = "users.all", query = "SELECT us FROM users us ORDER BY us.id"),
+    @NamedQuery(name = "users.byUsername", query = "SELECT us FROM users us WHERE us.username = :username ")
 })
 public class Users implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+   @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
 
-    @Column(name = "name", nullable = false)
+    @Column(name = "fullname", nullable = false)
     private String user;
 
     @Column(name = "username", nullable = false, unique = true)

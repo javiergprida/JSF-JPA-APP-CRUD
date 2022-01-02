@@ -13,13 +13,13 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
-@Entity
+@Entity(name = "quality")
 @Table(name = "qualities")
-@NamedQuery(name = "quality.byUsers", query = "select qa from qualities qa where qa.users.id = :id")
+@NamedQuery(name = "quality.byUsers", query = "SELECT qa FROM quality qa WHERE qa.user.id = :user_id")
 public class Quality implements Serializable {
 
    @Id
-   @GeneratedValue(strategy = GenerationType.AUTO)
+   @GeneratedValue(strategy=GenerationType.IDENTITY)
 @Column(name = "id")
    private Integer id;
 

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xml:lang="en" 
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui" >
+
+    <f:view>
+        <h:head>
+            <title>User Profile</title>
+            <meta content="text/html; charset=utf-8" />
+
+        </h:head>
+        <h:body>
+            <h3>This is your USER PROFILE</h3>
+            <p:panel>
+                <p:dataList value="#{HomeController.currentQualities}" var="quality" type="ordered">
+                    <f:facet name="header">
+                        #{HomeController.currentUser.user}
+                    </f:facet>
+                    #{quality.description}
+                </p:dataList>
+
+                <f:facet name="footer">
+                    <h:form>
+                        <p:commandButton value="All Users" action="UsersView?faces-redirect=true"/>
+                    </h:form>
+
+                </f:facet>
+
+            </p:panel>
+        </h:body>
+    </f:view>
+</html>
+
