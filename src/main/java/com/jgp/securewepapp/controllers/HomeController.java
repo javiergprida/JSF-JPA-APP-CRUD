@@ -7,9 +7,13 @@ import java.util.List;
 import java.util.Optional;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.security.enterprise.SecurityContext;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
 
 @RequestScoped
 @Named
@@ -20,6 +24,9 @@ public class HomeController {
     
     @Inject
     SecurityContext securityContext;
+    
+    @Inject
+    FacesContext facesContext;
 
     private Optional<User> currentUser;
 
@@ -42,6 +49,10 @@ public class HomeController {
         return currentQualities;
     }
 
-    
+    public String logout() throws ServletException{
+            ExternalContext ec = facesContext.getExternalContext();
+            ((HttpServletRequest)ec.getRequest()).logout();
+            return "/Login.xhtml?faces-redirect=true";
+    }
 
 }
