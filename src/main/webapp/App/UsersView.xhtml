@@ -10,12 +10,16 @@
         </h:head>
         <h:body>
             <h3>All Users</h3>
-            <p:dataTable value="#{UsersController.allUsers}" var="user">
+            
+            <h:form>
+                        <p:commandButton value=" Back" action="Index?faces-redirect=true"/>
+            </h:form>
+            <p:dataTable value="#{usersController.allUsers}" var="user">
                 <p:column headerText="Id">
                     <h:outputText value="#{user.id}" />
                 </p:column>
-                <p:column headerText="fullname">
-                    <h:outputText value="#{user.user}" />
+                <p:column headerText="Fullname">
+                    <h:outputText value="#{user.fullname}" />
                 </p:column>
                 <p:column headerText="Username">
                     <h:outputText value="#{user.username}" />

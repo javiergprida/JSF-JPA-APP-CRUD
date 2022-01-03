@@ -1,6 +1,6 @@
 package com.jgp.securewepapp.controllers;
 
-import com.jgp.securewepapp.entities.Users;
+import com.jgp.securewepapp.entities.User;
 import com.jgp.securewepapp.services.DataService;
 import java.util.List;
 import javax.annotation.PostConstruct;
@@ -15,7 +15,7 @@ public class UsersController {
     @Inject
     DataService dataservice;
 
-    private List<Users> allUsers;
+    private List<User> allUsers;
 
     @PostConstruct
     public void initialize() {
@@ -23,7 +23,7 @@ public class UsersController {
 
     }
 
-    public List<Users> getAllUsers() {
+    public List<User> getAllUsers() {
         return allUsers;
     }
 

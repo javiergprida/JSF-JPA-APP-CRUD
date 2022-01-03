@@ -11,13 +11,13 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
-@Entity(name = "users")
+@Entity
 @Table(name = "users")
 @NamedQueries({
-    @NamedQuery(name = "users.all", query = "SELECT us FROM users us ORDER BY us.id"),
-    @NamedQuery(name = "users.byUsername", query = "SELECT us FROM users us WHERE us.username = :username ")
+    @NamedQuery(name = "User.all", query = "SELECT us FROM User us ORDER BY us.id"),
+    @NamedQuery(name = "User.byUsername", query = "SELECT us FROM User us WHERE us.username = :username ")
 })
-public class Users implements Serializable {
+public class User implements Serializable {
 
     @Id
    @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -25,7 +25,7 @@ public class Users implements Serializable {
     private Integer id;
 
     @Column(name = "fullname", nullable = false)
-    private String user;
+    private String fullname;
 
     @Column(name = "username", nullable = false, unique = true)
     private String username;
@@ -36,11 +36,11 @@ public class Users implements Serializable {
     @Column(name = "usergroup", nullable = false)
     private String group;
 
-    public Users() {
+    public User() {
     }
 
-    public Users(String user, String username, String password, String group) {
-        this.user = user;
+    public User(String fullname, String username, String password, String group) {
+        this.fullname = fullname;
         this.username = username;
         this.password = password;
         this.group = group;
@@ -50,8 +50,8 @@ public class Users implements Serializable {
         return id;
     }
 
-    public String getUser() {
-        return user;
+    public String getFullname() {
+        return fullname;
     }
 
     public String getUsername() {
@@ -85,7 +85,7 @@ public class Users implements Serializable {
             return false;
         }
 
-        final Users other = (Users) obj;
+        final User other = (User) obj;
         if (!Objects.equals(this.id, other.id)) {
             return false;
         }

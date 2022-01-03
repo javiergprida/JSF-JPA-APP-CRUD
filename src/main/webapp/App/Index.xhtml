@@ -14,9 +14,9 @@
         <h:body>
             <h3>This is your USER PROFILE</h3>
             <p:panel>
-                <p:dataList value="#{HomeController.currentQualities}" var="quality" type="ordered">
+                <p:dataList value="#{homeController.currentQualities}" var="quality" type="ordered">
                     <f:facet name="header">
-                        #{HomeController.currentUser.user}
+                       #{homeController.currentUser.fullname}
                     </f:facet>
                     #{quality.description}
                 </p:dataList>

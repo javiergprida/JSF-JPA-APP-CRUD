@@ -13,9 +13,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
-@Entity(name = "quality")
+@Entity
 @Table(name = "qualities")
-@NamedQuery(name = "quality.byUsers", query = "SELECT qa FROM quality qa WHERE qa.user.id = :user_id")
+@NamedQuery(name = "Quality.byUser", query = "SELECT qa FROM Quality qa WHERE qa.user.id = :userId")
 public class Quality implements Serializable {
 
    @Id
@@ -28,12 +28,12 @@ private String description;
 
 @ManyToOne
 @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
-private Users user;
+private User user;
 
     public Quality() {
     }
 
-    public Quality(String description, Users user) {
+    public Quality(String description, User user) {
         this.description = description;
         this.user = user;
     }
@@ -46,7 +46,7 @@ private Users user;
         return description;
     }
 
-    public Users getUser() {
+    public User getUser() {
         return user;
     }
 

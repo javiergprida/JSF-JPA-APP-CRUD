@@ -1,6 +1,6 @@
 package com.jgp.securewepapp.services;
 
-import com.jgp.securewepapp.entities.Users;
+import com.jgp.securewepapp.entities.User;
 import javax.enterprise.context.ApplicationScoped;
 
 import javax.enterprise.context.Initialized;
@@ -17,9 +17,9 @@ public class DataInitializer {
     
     public void execute(@Observes @Initialized(ApplicationScoped.class) Object Event) {
         if (dataservice.getAllUser().isEmpty()) {
-            Users Javier = dataservice.CreateUser("Javier Gomez ", "jprida", "12345", "admin");
-            Users Roderik = dataservice.CreateUser("Roderik Sosa ", "roderik", "123456", "user");
-            Users Lourdes = dataservice.CreateUser("Flor de Lourdes Prida ", "luliprida", "1234567", "user");
+            User Javier = dataservice.createUser("Javier Gomez ", "jprida", "12345", "admin");
+            User Roderik = dataservice.createUser("Roderik Sosa ", "roderik", "123456", "user");
+            User Lourdes = dataservice.createUser("Flor de Lourdes Prida ", "luliprida", "1234567", "user");
 
             dataservice.createQuality("Wonderfull", Javier);
             dataservice.createQuality("Excelent TeamLeader", Javier);
